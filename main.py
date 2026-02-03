@@ -4,9 +4,9 @@ import os
 from telegram import Bot
 
 # --- CONFIGURACIÓN DE LA NUBE ---
-# Ahora las llaves las saca de los "Secretos" de GitHub
-TOKEN = os.environ['8540812072:AAFTlBXZo2FmbjFo2RCKFnyUQZoVY18AcK8']
-CHAT_ID = os.environ['496903409']
+# GitHub nos da las llaves secretas
+TOKEN = os.environ['TELEGRAM_TOKEN']
+CHAT_ID = os.environ['CHAT_ID']
 
 FUENTES = [
     {"nombre": "Diario Olé", "url": "https://www.ole.com.ar/rss/boca-juniors/"},
@@ -35,6 +35,7 @@ async def enviar_noticias():
                 print(f"Error leyendo {fuente['nombre']}: {e}")
 
         if hay_info:
+            # Cortamos si es muy largo
             if len(mensaje) > 4000: mensaje = mensaje[:4000] + "..."
             await bot.send_message(chat_id=CHAT_ID, text=mensaje, parse_mode='Markdown')
             print("¡Noticias enviadas con éxito!")
