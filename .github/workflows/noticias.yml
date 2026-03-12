@@ -1,8 +1,8 @@
 name: Bot Boca Juniors
 
 on:
-  schedule:
-    - cron: '0 * * * *' # <--- ESTO significa: "Al minuto 0 de CADA hora"
+ schedule:
+    - cron: '0 12 * * *' # <--- ESTO significa: "Todos los días a las 12:00 UTC (09:00 AM de Argentina)"
   workflow_dispatch: # Te deja probarlo manualmente con un botón
 
 jobs:
